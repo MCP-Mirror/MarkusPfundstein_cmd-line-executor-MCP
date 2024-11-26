@@ -4,29 +4,15 @@ Example MCP server to call command line apps
 
 ## Components
 
-### Resources
-
-The server implements a simple note storage system with:
-- Custom note:// URI scheme for accessing individual notes
-- Each note resource has a name, description and text/plain mimetype
-
-### Prompts
-
-The server provides a single prompt:
-- summarize-notes: Creates summaries of all stored notes
-  - Optional "style" argument to control detail level (brief/detailed)
-  - Generates prompt combining all current notes with style preference
-
 ### Tools
 
 The server implements one tool:
-- add-note: Adds a new note to the server
-  - Takes "name" and "content" as required string arguments
-  - Updates server state and notifies clients of resource changes
+- run_command: Runs a command line comment
+  - Takes "cmd" and "args" as string arguments
+  - Runs the command and returns stdout, stderr, status_code, etc.
 
 ## Configuration
 
-[TODO: Add configuration details specific to your implementation]
 
 ## Quickstart
 
@@ -45,7 +31,7 @@ On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
       "command": "uv",
       "args": [
         "--directory",
-        "/Users/markus/experiments/claude-mvp/cmd-line-executor",
+        "/Users/$(whoami)/experiments/claude-mvp/cmd-line-executor",
         "run",
         "cmd-line-executor"
       ]
